@@ -5,11 +5,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A2D2562-947
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.Api", "src\DidacticPotato.Api\DidacticPotato.Api.csproj", "{E597F120-4656-4F15-8AF3-3626DABF8643}"
 EndProject
+<<<<<<< HEAD
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DidacticPotato.Options", "DidacticPotato.Options", "{E889C255-E7BD-4854-9566-869CFCE52992}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A4D3EE1F-F00A-4C77-9610-29682422E796}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.Options", "DidacticPotato.Options\src\DidacticPotato.Options\DidacticPotato.Options.csproj", "{907965E7-D0DE-4235-96E9-C0C9CBA904CD}"
+=======
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DidacticPotato.MessageBrokers", "DidacticPotato.MessageBrokers", "{CFF02245-2B17-43A8-9ECF-81338DCBA0AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6395BBF5-973F-4A01-BEA6-0E2DAAA45D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.MessageBrokers", "DidacticPotato.MessageBrokers\src\DidacticPotato.MessageBrokers\DidacticPotato.MessageBrokers.csproj", "{30896583-567B-461C-9018-0910F43C3B7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DidacticPotato.MessageBrokers.RabbitMQ", "DidacticPotato.MessageBrokers.RabbitMQ", "{FCC36A1B-A6F5-43AE-A9C2-CFD26CD0256E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{858C5D11-FEBF-4692-A195-505A05EF3350}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.MessageBrokers.RabbitMQ", "DidacticPotato.MessageBrokers.RabbitMQ\src\DidacticPotato.MessageBrokers.RabbitMQ\DidacticPotato.MessageBrokers.RabbitMQ.csproj", "{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58}"
+>>>>>>> 94690b6 (Added lib projects MessageBrokers and MessageBrokers.RabbitMQ)
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +35,7 @@ Global
 		{E597F120-4656-4F15-8AF3-3626DABF8643}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E597F120-4656-4F15-8AF3-3626DABF8643}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E597F120-4656-4F15-8AF3-3626DABF8643}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,5 +45,22 @@ Global
 		{E597F120-4656-4F15-8AF3-3626DABF8643} = {1A2D2562-9471-4568-98D4-072AAC8A7645}
 		{A4D3EE1F-F00A-4C77-9610-29682422E796} = {E889C255-E7BD-4854-9566-869CFCE52992}
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD} = {A4D3EE1F-F00A-4C77-9610-29682422E796}
+=======
+		{30896583-567B-461C-9018-0910F43C3B7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30896583-567B-461C-9018-0910F43C3B7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30896583-567B-461C-9018-0910F43C3B7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30896583-567B-461C-9018-0910F43C3B7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E597F120-4656-4F15-8AF3-3626DABF8643} = {1A2D2562-9471-4568-98D4-072AAC8A7645}
+		{6395BBF5-973F-4A01-BEA6-0E2DAAA45D79} = {CFF02245-2B17-43A8-9ECF-81338DCBA0AA}
+		{30896583-567B-461C-9018-0910F43C3B7B} = {6395BBF5-973F-4A01-BEA6-0E2DAAA45D79}
+		{858C5D11-FEBF-4692-A195-505A05EF3350} = {FCC36A1B-A6F5-43AE-A9C2-CFD26CD0256E}
+		{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58} = {858C5D11-FEBF-4692-A195-505A05EF3350}
+>>>>>>> 94690b6 (Added lib projects MessageBrokers and MessageBrokers.RabbitMQ)
 	EndGlobalSection
 EndGlobal
