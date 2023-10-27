@@ -7,11 +7,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\DidacticPotato.MessageBrokers\src\DidacticPotato.MessageBrokers\DidacticPotato.MessageBrokers.csproj" />
+      <ProjectReference Include="..\..\..\DidacticPotato.Options\src\DidacticPotato.Options\DidacticPotato.Options.csproj" />
     </ItemGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Clients" />
+      <PackageReference Include="RabbitMQ.Client" Version="6.6.0" />
     </ItemGroup>
 </Project>
