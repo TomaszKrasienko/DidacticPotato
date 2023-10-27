@@ -23,6 +23,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{858C5D11-FEB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.MessageBrokers.RabbitMQ", "DidacticPotato.MessageBrokers.RabbitMQ\src\DidacticPotato.MessageBrokers.RabbitMQ\DidacticPotato.MessageBrokers.RabbitMQ.csproj", "{DB1181E7-FCDC-47C7-8633-DFDF3EB41F58}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DidacticPotato.Serializer.NewtonsoftJson", "DidacticPotato.Serializer.NewtonsoftJson", "{556CE95B-7E61-4755-ABB8-BFBA78999714}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DidacticPotato.Serializer", "DidacticPotato.Serializer", "{E9B6343F-C664-4A55-B609-E9D3E394AEEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{19847748-BC77-45B9-B50B-BE0B09A5E85E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.Serializer", "DidacticPotato.Serializer\src\DidacticPotato.Serializer\DidacticPotato.Serializer.csproj", "{0AE8F212-477B-4D55-9AA1-B594D53FA19B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8F7AEB97-2626-4266-AA77-16777549A73A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DidacticPotato.Serializer.NewtonsoftJson", "src\DidacticPotato.Serializer.NewtonsoftJson\DidacticPotato.Serializer.NewtonsoftJson\DidacticPotato.Serializer.NewtonsoftJson.csproj", "{FACF039D-3969-4623-8B76-3DA4528EE3DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,11 +49,23 @@ Global
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE8F212-477B-4D55-9AA1-B594D53FA19B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE8F212-477B-4D55-9AA1-B594D53FA19B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE8F212-477B-4D55-9AA1-B594D53FA19B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE8F212-477B-4D55-9AA1-B594D53FA19B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACF039D-3969-4623-8B76-3DA4528EE3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACF039D-3969-4623-8B76-3DA4528EE3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACF039D-3969-4623-8B76-3DA4528EE3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACF039D-3969-4623-8B76-3DA4528EE3DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E597F120-4656-4F15-8AF3-3626DABF8643} = {1A2D2562-9471-4568-98D4-072AAC8A7645}
 		{A4D3EE1F-F00A-4C77-9610-29682422E796} = {E889C255-E7BD-4854-9566-869CFCE52992}
 		{907965E7-D0DE-4235-96E9-C0C9CBA904CD} = {A4D3EE1F-F00A-4C77-9610-29682422E796}
+		{19847748-BC77-45B9-B50B-BE0B09A5E85E} = {E9B6343F-C664-4A55-B609-E9D3E394AEEB}
+		{0AE8F212-477B-4D55-9AA1-B594D53FA19B} = {19847748-BC77-45B9-B50B-BE0B09A5E85E}
+		{8F7AEB97-2626-4266-AA77-16777549A73A} = {556CE95B-7E61-4755-ABB8-BFBA78999714}
+		{FACF039D-3969-4623-8B76-3DA4528EE3DA} = {8F7AEB97-2626-4266-AA77-16777549A73A}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E597F120-4656-4F15-8AF3-3626DABF8643} = {1A2D2562-9471-4568-98D4-072AAC8A7645}
