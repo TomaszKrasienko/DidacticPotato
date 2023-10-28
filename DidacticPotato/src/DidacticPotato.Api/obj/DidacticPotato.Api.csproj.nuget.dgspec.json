@@ -4,14 +4,14 @@
     "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj": {}
   },
   "projects": {
-    "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj": {
+    "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj",
-        "projectName": "DidacticPotato.Api",
-        "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj",
+        "projectUniqueName": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj",
+        "projectName": "DidacticPotato.Serializer",
+        "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj",
         "packagesPath": "/Users/mac/.nuget/packages/",
-        "outputPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/obj/",
+        "outputPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -41,6 +41,70 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj",
+        "projectName": "DidacticPotato.Api",
+        "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/DidacticPotato.Api.csproj",
+        "packagesPath": "/Users/mac/.nuget/packages/",
+        "outputPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Api/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/mac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj": {
+                "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj"
+              },
+              "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson.csproj": {
+                "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
@@ -49,6 +113,76 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.400/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson.csproj",
+        "projectName": "DidacticPotato.Serializer.NewtonsoftJson",
+        "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson.csproj",
+        "packagesPath": "/Users/mac/.nuget/packages/",
+        "outputPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/src/DidacticPotato.Serializer.NewtonsoftJson/DidacticPotato.Serializer.NewtonsoftJson/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/mac/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj": {
+                "projectPath": "/Users/mac/Documents/Projects/PrivateGitRepos/DidacticPotato/DidacticPotato/DidacticPotato.Serializer/src/DidacticPotato.Serializer/DidacticPotato.Serializer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

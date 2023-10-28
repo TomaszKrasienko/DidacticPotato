@@ -1,9 +1,13 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using DidacticPotato.Serializer;
+using DidacticPotato.Serializer.NewtonsoftJson.Configuration;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.SetNewtonsoftJsonConfiguration();
 
 var app = builder.Build();
 
@@ -16,30 +20,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapGet("/testJson", (ISerializer serializer) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    var obj = new JsonTest("test", 1, new List<string> {"test", "test2"});
+    string result = serializer.ToJson(obj);
+    return Results.Ok(result);
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
 
+record JsonTest(string fieldTest, int field2, List<string> field3, int? field4 = null);

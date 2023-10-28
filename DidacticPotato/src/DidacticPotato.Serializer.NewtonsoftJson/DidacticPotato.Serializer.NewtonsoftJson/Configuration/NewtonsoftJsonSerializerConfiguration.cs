@@ -11,12 +11,7 @@ public static class NewtonsoftJsonSerializerConfiguration
         JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
         {
             NullValueHandling = NullValueHandling.Include,
-            Formatting = Formatting.None,
-            TypeNameHandling = TypeNameHandling.All,
-            ContractResolver = new DefaultContractResolver()
-            {
-                NamingStrategy = new SnakeCaseNamingStrategy()
-            }
+            Formatting = Formatting.Indented
         };
         services.AddSingleton(jsonSerializerSettings);
         services.AddSingleton<ISerializer, NewtonsoftJsonSerializer>();
