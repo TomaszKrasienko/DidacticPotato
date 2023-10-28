@@ -2,8 +2,10 @@ using System.Collections.Concurrent;
 using System.Text;
 using DidacticPotato.MessageBrokers.RabbitMQ.Clients.Abstractions;
 using DidacticPotato.MessageBrokers.RabbitMQ.Configuration;
+using DidacticPotato.MessageBrokers.RabbitMQ.Configuration.Models;
 using DidacticPotato.MessageBrokers.RabbitMQ.Conventions.Abstractions;
 using DidacticPotato.Serializer;
+using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 
 namespace DidacticPotato.MessageBrokers.RabbitMQ.Clients;
@@ -17,10 +19,12 @@ public class RabbitMqClient : IRabbitMqClient
     private readonly ConcurrentDictionary<int, IModel> _channels;
     private int _channelsCount = 0;
 
-    public RabbitMqClient(ProducerConnection producerConnection, ISerializer serializer)
+    public RabbitMqClient(ProducerConnection producerConnection, ISerializer serializer, IOptions<RabbitMqOptions> options)
     {
         _serializer = serializer;
         _producerConnection = producerConnection.Connection;
+        _channels = new ConcurrentDictionary<int, IModel>();
+        _maxChannels = options.Value.RequestedChannelMax;
     }
     
     public void Send(object message, IConvention convention, string messageId = null, string correlationId = null)

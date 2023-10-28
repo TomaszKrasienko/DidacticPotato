@@ -1,10 +1,12 @@
 using System.Collections.Concurrent;
+using System.Reflection;
 using DidacticPotato.MessageBrokers.Publishers;
 using DidacticPotato.MessageBrokers.RabbitMQ.Clients;
 using DidacticPotato.MessageBrokers.RabbitMQ.Clients.Abstractions;
 using DidacticPotato.MessageBrokers.RabbitMQ.Configuration.Models;
 using DidacticPotato.MessageBrokers.RabbitMQ.Conventions;
 using DidacticPotato.MessageBrokers.RabbitMQ.Conventions.Abstractions;
+using DidacticPotato.MessageBrokers.TestEvents;
 using DidacticPotato.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,26 +28,28 @@ public static class Extensions
 
     private static IServiceCollection SetServices(this IServiceCollection services, IConfiguration configuration)
     {
-        
         var testOptions = configuration.GetOptions<RabbitMqOptions>(_rabbitSectionName);
-        
         return services
             .AddSingleton<IBusPublisher, RabbitMqBusPublisher>()
             .AddSingleton<IRabbitMqClient, RabbitMqClient>()
             .AddSingleton<IConventionsRegistry>(opt =>
             {
                 var options = configuration.GetOptions<RabbitMqOptions>(_rabbitSectionName);
-                var rabbitMqConventionsRegistry = new RabbitMqConventionsRegistry();
+                var conventionsRegistry = new RabbitMqConventionsRegistry();
                 foreach (var routing in options.Routing)
                 {
-                    rabbitMqConventionsRegistry.Add(
-                        Type.GetType(routing.Type), 
-                        new MessageConvention(routing.RoutingKey, routing.QueueName, routing.Exchange.Name,
-                            routing.Exchange.Type, routing.Exchange.Durable, routing.Exchange.AutoDelete,
-                            routing.Exchange.Arguments));
+                    var allAssemblies = AppDomain.CurrentDomain.GetAssemblies();
+                    var type = allAssemblies.FirstOrDefault(x => x.GetType(routing.Type) != null)?.GetType(routing.Type);
+                    if (type is not null)
+                    {
+                        conventionsRegistry.Add(
+                            type,
+                            new MessageConvention(routing.RoutingKey, routing.QueueName, routing.Exchange.Name,
+                                routing.Exchange.Type, routing.Exchange.Durable, routing.Exchange.AutoDelete,
+                                routing.Exchange.Arguments));
+                    }
                 }
-
-                return rabbitMqConventionsRegistry;
+                return conventionsRegistry;
             })
             .AddSingleton<IConventionsProvider, RabbitMqConventionsProvider>();
     }

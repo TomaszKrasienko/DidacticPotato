@@ -32,7 +32,7 @@ public record RoutingOptions
 public record ExchangeOptions
 {
     public string Name { get; init; }
-    public string Type { get; init; } = "direction";
+    public string Type { get; init; } = "direct";
     public bool Durable { get; init; } = false;
     public bool AutoDelete { get; init; } = false;
     public Dictionary<string, object> Arguments { get; init; }
