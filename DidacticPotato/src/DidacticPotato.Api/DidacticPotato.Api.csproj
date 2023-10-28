@@ -13,6 +13,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DidacticPotato.MessageBrokers.RabbitMQ\src\DidacticPotato.MessageBrokers.RabbitMQ\DidacticPotato.MessageBrokers.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\DidacticPotato.Serializer\src\DidacticPotato.Serializer\DidacticPotato.Serializer.csproj" />
     <ProjectReference Include="..\DidacticPotato.Serializer.NewtonsoftJson\DidacticPotato.Serializer.NewtonsoftJson\DidacticPotato.Serializer.NewtonsoftJson.csproj" />
   </ItemGroup>

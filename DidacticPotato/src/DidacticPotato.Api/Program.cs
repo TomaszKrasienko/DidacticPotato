@@ -1,4 +1,6 @@
-﻿using DidacticPotato.Serializer;
+﻿using DidacticPotato.Api;
+using DidacticPotato.MessageBrokers.RabbitMQ.Configuration;
+using DidacticPotato.Serializer;
 using DidacticPotato.Serializer.NewtonsoftJson.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.SetNewtonsoftJsonConfiguration();
+builder.Services.SetRabbitMqConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
@@ -30,4 +33,7 @@ app.MapGet("/testJson", (ISerializer serializer) =>
 app.Run();
 
 
-record JsonTest(string fieldTest, int field2, List<string> field3, int? field4 = null);
+namespace DidacticPotato.Api
+{
+    record JsonTest(string fieldTest, int field2, List<string> field3, int? field4 = null);
+}

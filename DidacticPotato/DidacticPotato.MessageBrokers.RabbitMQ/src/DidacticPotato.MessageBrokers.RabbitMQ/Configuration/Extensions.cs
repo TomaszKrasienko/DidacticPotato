@@ -1,5 +1,10 @@
+using System.Collections.Concurrent;
 using DidacticPotato.MessageBrokers.Publishers;
+using DidacticPotato.MessageBrokers.RabbitMQ.Clients;
+using DidacticPotato.MessageBrokers.RabbitMQ.Clients.Abstractions;
 using DidacticPotato.MessageBrokers.RabbitMQ.Configuration.Models;
+using DidacticPotato.MessageBrokers.RabbitMQ.Conventions;
+using DidacticPotato.MessageBrokers.RabbitMQ.Conventions.Abstractions;
 using DidacticPotato.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,13 +19,35 @@ public static class Extensions
     public static IServiceCollection SetRabbitMqConfiguration(this IServiceCollection services,
         IConfiguration configuration)
     {
-        return services;
+        return services
+            .SetServices(configuration)
+            .SetConnectionFactory(configuration);
     }
 
-    private static IServiceCollection SetServices(this IServiceCollection services)
+    private static IServiceCollection SetServices(this IServiceCollection services, IConfiguration configuration)
     {
-        return 
-            services.AddSingleton<IBusPublisher, RabbitMqBusPublisher>();
+        
+        var testOptions = configuration.GetOptions<RabbitMqOptions>(_rabbitSectionName);
+        
+        return services
+            .AddSingleton<IBusPublisher, RabbitMqBusPublisher>()
+            .AddSingleton<IRabbitMqClient, RabbitMqClient>()
+            .AddSingleton<IConventionsRegistry>(opt =>
+            {
+                var options = configuration.GetOptions<RabbitMqOptions>(_rabbitSectionName);
+                var rabbitMqConventionsRegistry = new RabbitMqConventionsRegistry();
+                foreach (var routing in options.Routing)
+                {
+                    rabbitMqConventionsRegistry.Add(
+                        Type.GetType(routing.Type), 
+                        new MessageConvention(routing.RoutingKey, routing.QueueName, routing.Exchange.Name,
+                            routing.Exchange.Type, routing.Exchange.Durable, routing.Exchange.AutoDelete,
+                            routing.Exchange.Arguments));
+                }
+
+                return rabbitMqConventionsRegistry;
+            })
+            .AddSingleton<IConventionsProvider, RabbitMqConventionsProvider>();
     }
 
     private static IServiceCollection SetConnectionFactory(this IServiceCollection services,
