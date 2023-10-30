@@ -8,12 +8,14 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\DidacticPotato.MessageBrokers\src\DidacticPotato.MessageBrokers\DidacticPotato.MessageBrokers.csproj" />
       <ProjectReference Include="..\..\..\DidacticPotato.Options\src\DidacticPotato.Options\DidacticPotato.Options.csproj" />
+      <ProjectReference Include="..\..\..\DidacticPotato.Serializer\src\DidacticPotato.Serializer\DidacticPotato.Serializer.csproj" />
     </ItemGroup>
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="Polly" Version="8.0.0" />
       <PackageReference Include="RabbitMQ.Client" Version="6.6.0" />
     </ItemGroup>
 </Project>

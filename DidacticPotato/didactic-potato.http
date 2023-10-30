@@ -3,3 +3,13 @@
 
 ###
 GET {{address}}/testJson
+
+###
+POST {{address}}/sendMessage
+Content-Type: application/json
+
+{
+    "Author":"TomaszKrasienko",
+    "Content":"Test",
+    "CreationDate":"2023-10-28"
+}

@@ -19,5 +19,8 @@ internal sealed class NewtonsoftJsonSerializer : ISerializer
         => JsonConvert.SerializeObject(value, _settings);
 
     public object ToObject<T>(string json)
-        => JsonConvert.DeserializeObject<T>(json, _settings);
+        => ToObject(json, typeof(T));
+
+    public object ToObject(string json, Type type)
+        => JsonConvert.DeserializeObject(json, type, _settings);
 }
