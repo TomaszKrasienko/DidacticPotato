@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using DidacticPotato.Api;
+﻿using DidacticPotato.Api;
 using DidacticPotato.MessageBrokers.Publishers;
 using DidacticPotato.MessageBrokers.RabbitMQ.Configuration;
 using DidacticPotato.MessageBrokers.Subscribers;
