@@ -1,3 +1,5 @@
+using DidacticPotato.Persistence.MongoDB.Factories;
+using DidacticPotato.Persistence.MongoDB.Factories.Abstractions;
 using DidacticPotato.Persistence.MongoDB.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,11 +25,12 @@ public static class Extensions
             var options = opt.GetRequiredService<IOptions<MongoDbOptions>>().Value;
             return client.GetDatabase(options.Database);
         });
+
+        services.AddTransient<IMongoSessionFactory, MongoSessionFactory>();
         return services;
     }
 
     private static IServiceCollection SetOptions(this IServiceCollection services, IConfiguration configuration)
-    {
-        services.Configure<MongoDbOptions>(configuration.GetSection("MongoDb"));
-    }
+        =>  services.Configure<MongoDbOptions>(configuration.GetSection("MongoDb"));
+    
 }

@@ -43,7 +43,7 @@ public static class Extensions
                         ?.GetType(routing.Type);
                     if (type is not null)
                     {
-                        conventionsRegistry.Add(
+                        conventionsRegistry. Add(
                             type,
                             new MessageConvention(routing.Exchange.Name, routing.Exchange.Type,
                                 routing.Exchange.Durable,
