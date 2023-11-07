@@ -10,4 +10,8 @@
     <ItemGroup>
       <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\DidacticPotato.Options\src\DidacticPotato.Options\DidacticPotato.Options.csproj" />
+      <ProjectReference Include="..\..\..\DidacticPotato.Types\src\DidacticPotato.Types\DidacticPotato.Types.csproj" />
+    </ItemGroup>
 </Project>

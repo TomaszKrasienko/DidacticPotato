@@ -1,12 +1,15 @@
-﻿using DidacticPotato.Api;
+﻿using System;
+using DidacticPotato.Api.Configuration;
+using DidacticPotato.Api.Events;
+using DidacticPotato.Api.MongoDocuments;
 using DidacticPotato.MessageBrokers.Publishers;
-using DidacticPotato.MessageBrokers.RabbitMQ.Configuration;
-using DidacticPotato.MessageBrokers.Subscribers;
-using DidacticPotato.MessageBrokers.TestCommands;
-using DidacticPotato.MessageBrokers.TestCommands.Handlers;
-using DidacticPotato.MessageBrokers.TestEvents;
-using DidacticPotato.Serializer;
+using DidacticPotato.Persistence.MongoDB.Configuration;
+using DidacticPotato.Persistence.MongoDB.Repositories;
 using DidacticPotato.Serializer.NewtonsoftJson.Configuration;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,17 +18,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.SetNewtonsoftJsonConfiguration();
-builder.Services.SetRabbitMqConfiguration(builder.Configuration);
-builder.Services.AddScoped<IMessageReceiveHandler, MessageReceiveHandler>();
+builder.Services.SetConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
-var subscriber = app.Services.GetRequiredService<IBusSubscriber>();
-subscriber.Subscribe<MessageReceived>(async (ServiceProvider, @event, _) =>
-{
-    using var scope = ServiceProvider.CreateScope();
-    await scope.ServiceProvider.GetRequiredService<IMessageReceiveHandler>().Handle(@event);
-});
+// var subscriber = app.Services.GetRequiredService<IBusSubscriber>();
+// subscriber.Subscribe<MessageReceived>(async (ServiceProvider, @event, _) =>
+// {
+//     using var scope = ServiceProvider.CreateScope();
+//     await scope.ServiceProvider.GetRequiredService<IMessageReceiveHandler>().Handle(@event);
+// });
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -34,25 +37,38 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
- app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-app.MapGet("/testJson", (ISerializer serializer) =>
+//Mongo example
+#region MongoDb
+app.MapPost("/add-to-mongo", async (TemporaryDocument temporaryObject,
+        IMongoRepository<TemporaryDocument, Guid> repository) =>
 {
-    var obj = new JsonTest("test", 1, new List<string> {"test", "test2"});
-    string result = serializer.ToJson(obj);
-    return Results.Ok(result);
+    var id = Guid.NewGuid();
+    await repository.AddAsync(temporaryObject with {Id = id});
+    return Results.CreatedAtRoute("GetById", new {id = id}, null);
 });
 
-app.MapPost("/sendMessage", (MessageSent message, IBusPublisher busPublisher) =>
+app.MapGet("/get-from-mongo/{id:guid}", async (Guid id, IMongoRepository<TemporaryDocument, Guid> repository) =>
 {
-    busPublisher.PublishAsync(message, Guid.NewGuid().ToString(), Guid.NewGuid().ToString());
+    var result = await repository.GetByIdAsync(id);
+    return Results.Ok(result);
+}).WithName("GetById");
+
+app.MapGet("/get-from-mongo", async (IMongoRepository<TemporaryDocument, Guid> repository) =>
+{
+    var results = await repository.FindAsync(_ => true);
+    return Results.Ok(results);
+});
+#endregion
+
+//RabbitMQ Example
+app.MapPost("send-broker-message", async (MessageSent @event, IBusPublisher busPublisher) =>
+{
+    var messageId = Guid.NewGuid().ToString("N");
+    var correlationId = Guid.NewGuid().ToString("N");
+    await busPublisher.PublishAsync<MessageSent>(@event, messageId, correlationId);
     return Results.NoContent();
 });
 
 app.Run();
-
-
-namespace DidacticPotato.Api
-{
-    record JsonTest(string fieldTest, int field2, List<string> field3, int? field4 = null);
-}
