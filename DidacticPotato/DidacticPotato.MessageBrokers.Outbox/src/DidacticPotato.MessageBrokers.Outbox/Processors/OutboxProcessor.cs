@@ -61,7 +61,7 @@ internal sealed class OutboxProcessor : IHostedService
         }
         foreach (var message in messages.OrderBy(x => x.SentAt))
         {
-            await _publisher.PublishAsync(message.Message, message.Id, message.CorrelationId);
+            await _publisher.PublishAsync(message.Message, message.Id.ToString(), message.CorrelationId);
             await outboxAccessor.ProcessAsync(message);
         }
     }

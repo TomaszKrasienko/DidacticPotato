@@ -2,8 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -16,6 +14,7 @@
     <ProjectReference Include="..\..\DidacticPotato.MessageBrokers.RabbitMQ\src\DidacticPotato.MessageBrokers.RabbitMQ\DidacticPotato.MessageBrokers.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\DidacticPotato.MessageBrokers\src\DidacticPotato.MessageBrokers\DidacticPotato.MessageBrokers.csproj" />
     <ProjectReference Include="..\..\DidacticPotato.Options\src\DidacticPotato.Options\DidacticPotato.Options.csproj" />
+    <ProjectReference Include="..\..\DidacticPotato.Persistence.MongoDB\src\DidacticPotato.Persistence.MongoDB\DidacticPotato.Persistence.MongoDB.csproj" />
     <ProjectReference Include="..\..\DidacticPotato.Serializer\src\DidacticPotato.Serializer\DidacticPotato.Serializer.csproj" />
     <ProjectReference Include="..\DidacticPotato.Serializer.NewtonsoftJson\DidacticPotato.Serializer.NewtonsoftJson\DidacticPotato.Serializer.NewtonsoftJson.csproj" />
   </ItemGroup>

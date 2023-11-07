@@ -1,15 +1,30 @@
 
 @address = http://localhost:5122
 
+# MongoDB example
 ###
-GET {{address}}/testJson
-
-###
-POST {{address}}/sendMessage
+POST {{address}}/add-to-mongo
 Content-Type: application/json
 
 {
-    "Author":"TomaszKrasienko",
+    "Content":"FirstTest",
+    "CreationDate":"2023-10-28"
+}
+
+###
+GET {{address}}/get-from-mongo/2e29c24a-abab-4b19-8b03-23030b68a42f
+
+###
+GET {{address}}/get-from-mongo
+
+# RabbitMQ example
+
+###
+POST {{address}}/send-broker-message
+Content-Type: application/json
+
+{
+    "Author":"TK",
     "Content":"Test",
     "CreationDate":"2023-10-28"
 }

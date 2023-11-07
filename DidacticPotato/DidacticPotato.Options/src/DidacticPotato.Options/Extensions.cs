@@ -11,4 +11,11 @@ public static class Extensions
         section.Bind(obj);
         return obj;
     }
+
+    public static T GetOptions<T>(this IConfiguration configuration) where T : class, new()
+    {
+        var obj = new T();
+        configuration.Bind(obj);
+        return obj;
+    }
 }
